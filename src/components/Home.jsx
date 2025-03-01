@@ -178,7 +178,7 @@ const Home = () => {
           <div className="justify-between relative flex flex-col md:flex-row items-start">
             <div className="flex-col mt-8 pl-10 pt-10">
               <h1 className="text-[125px] font-bold z-20 text-black leading-none">
-                BuildAid
+                Shramik
               </h1>
               <div className="flex mt-6">
                 <div className="mt-4">
@@ -186,7 +186,7 @@ const Home = () => {
                     01 / About
                   </h2>
                   <p className="text-gray-600 mt-4 text-base max-w-[600px]">
-                  BuildAid was founded in 2014 with a vision to transform the construction industry. Comprising a dedicated team of innovators, problem-solvers, and industry experts, BuildAid focuses on creating solutions that empower workers, streamline operations, and drive progress across the sector. Through cutting-edge technology and community-driven initiatives, BuildAid is shaping the future of construction
+                  Shramik was founded in 2014 with a vision to transform the construction industry. Comprising a dedicated team of innovators, problem-solvers, and industry experts, Shramik focuses on creating solutions that empower workers, streamline operations, and drive progress across the sector. Through cutting-edge technology and community-driven initiatives, Shramik is shaping the future of construction
                   </p>
                 </div>
               </div>
@@ -213,12 +213,7 @@ const Home = () => {
                 02 / Our mission
               </h2>
               <p className="text-gray-600 mt-4 text-base">
-                Through working with businesses ranging from international
-                non-profits to billion-dollar corporations. Synthum has employed
-                deep expertise in developing communication strategies that
-                support business and financial objectives, executing
-                results-driven marketing and engagement strategies that result
-                in highest levels of client and employee retention
+              At Shramik, our mission is to empower construction workers and employers by providing innovative, technology-driven solutions that enhance productivity, ensure fair wages, and foster a safe, supportive community. We are committed to driving positive change in the construction industry by bridging gaps in skills, communication, and opportunity, ultimately shaping a brighter future for all stakeholders.
               </p>
             </div>
           </div>

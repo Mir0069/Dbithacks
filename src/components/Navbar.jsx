@@ -15,7 +15,7 @@ const Navbar = () => {
       <div className="flex items-center justify-between p-4">
         {/* Brand Name */}
         <div className="text-3xl font-extrabold text-white">
-          BuildAid
+          Shramik
         </div>
 
         {/* Hamburger Menu for Mobile */}
@@ -40,7 +40,16 @@ const Navbar = () => {
           >
             Home
           </NavLink>
-        
+          <NavLink
+            to="/signup"
+            className={({ isActive }) =>
+              isActive
+                ? 'text-blue-400 px-3 py-2 text-md font-medium'
+                : 'text-gray-300 hover:text-blue-400 px-3 py-2 text-md font-medium'
+            }
+          >
+            Sign-Up
+            </NavLink>
           <NavLink
             to="/about"
             className={({ isActive }) =>
