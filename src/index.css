@@ -4,3 +4,12 @@ body{
   background-color: #e7e7e7; 
  
 }
+.goog-te-gadget {
+  font-size: 0; /* Hide Google default text */
+}
+
+.goog-te-gadget .goog-te-combo {
+  font-size: 16px !important;
+  padding: 8px;
+  border-radius: 5px;
+}
