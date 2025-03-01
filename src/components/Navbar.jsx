@@ -3,6 +3,7 @@ import { NavLink } from 'react-router-dom';
 import { FaBars, FaTimes, FaUser, FaSignOutAlt } from 'react-icons/fa';
 import GoogleTranslate from './GoogleTranslate';
 import TextToSpeech from './TextToSpeech';
+import { SuccessContext } from '../context/Successcontext';
 const Navbar = () => {
   const [isOpen, setIsOpen] = useState(false);
   const [isLoggedIn, setIsLoggedIn] = useState(false);
