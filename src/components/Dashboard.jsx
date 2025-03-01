@@ -3,12 +3,55 @@ import { FaUserMd, FaChartPie, FaCog } from "react-icons/fa";
 import { motion } from "framer-motion";
 import jobsData from "./jobs.json"; // Import JSON directly
 import { NavLink } from "react-router-dom";
+import Cookies from "js-cookie"; // You will use js-cookie to access cookies
 
-const Dashboard = () => {
+const Dashboard = ({User,setUser}) => {
     const [jobs, setJobs] = useState([]);
+    const [userName, setUserName] = useState(''); // State to hold the user's name
+    const [loading, setLoading] = useState(true); // To handle loading state
+    const [error, setError] = useState(''); // To handle errors if any
 
     useEffect(() => {
-        setJobs(jobsData); // Directly setting JSON data to state
+        setJobs(jobsData); // Load jobs from JSON
+        
+        const fetchUserData = async () => {
+            const token = localStorage.getItem('token');
+            
+            if (!token) {
+                console.error('No token found');
+                setError('No token found, please log in again.');
+                setLoading(false);
+                return;
+            }
+            console.log(token)
+    
+            try {
+                const response = await fetch('https://poetic-subtle-amoeba.ngrok-free.app/dashboard/', {
+                    method: 'GET',
+                    headers: {
+                        'Authorization': `Bearer ${token}`,
+                        'Content-Type': 'application/json',
+                        'ngrok-skip-browser-warning': 'true',
+                    },
+                });
+
+    
+                if (response.ok) {
+                    const data = await response.json();
+                    setUserName(data.first_name || 'User');
+                } else {
+                    console.error('Failed to fetch data');
+                    setError('Failed to load user data');
+                }
+            } catch (error) {
+                console.error('Error fetching data:', error);
+                setError('Error fetching data. Please try again later.');
+            } finally {
+                setLoading(false);
+            }
+        };
+    
+        fetchUserData();
     }, []);
 
     return (
@@ -24,11 +67,21 @@ const Dashboard = () => {
                     <FaChartPie /> <span>Dashboard</span>
                 </h1>
                 <nav className="space-y-4">
-                    <NavLink to="/my_profile" className={({ isActive }) => isActive ? "text-gray-700 font-bold" : "text-white hover:text-gray-700 flex items-center space-x-3"}>
+                    <NavLink
+                        to="/my_profile"
+                        className={({ isActive }) =>
+                            isActive ? "text-gray-700 font-bold" : "text-white hover:text-gray-700 flex items-center space-x-3"
+                        }
+                    >
                         <FaUserMd />
                         <span>My Profile</span>
                     </NavLink>
-                    <NavLink to="/settings" className={({ isActive }) => isActive ? "text-gray-700 font-bold" : "text-white hover:text-gray-700 flex items-center space-x-3"}>
+                    <NavLink
+                        to="/settings"
+                        className={({ isActive }) =>
+                            isActive ? "text-gray-700 font-bold" : "text-white hover:text-gray-700 flex items-center space-x-3"
+                        }
+                    >
                         <FaCog />
                         <span>Settings</span>
                     </NavLink>
@@ -44,9 +97,11 @@ const Dashboard = () => {
                     transition={{ duration: 0.5, ease: "easeOut" }}
                     className="flex justify-between items-center bg-gradient-to-r from-blue-500 to-purple-500 p-4 rounded-lg shadow text-white"
                 >
-                    <h2 className="text-xl font-bold">Welcome, User!</h2>
+                    <h2 className="text-xl font-bold">
+                        Welcome, {userName}
+                    </h2>
                     <div className="flex items-center space-x-4">
-                        <span>Username</span>
+                        <span>userName</span>
                         <div className="w-10 h-10 bg-white rounded-full"></div>
                     </div>
                 </motion.header>

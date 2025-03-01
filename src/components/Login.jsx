@@ -8,7 +8,7 @@ const Login = () => {
   const [loading, setLoading] = useState(false);
   const [error, setError] = useState('');
   const [success, setSuccess] = useState('');
-  const navigate = useNavigate(); // Use react-router-dom's useNavigate for navigation
+  const navigate = useNavigate();
 
   const handleSubmit = async (e) => {
     e.preventDefault();
@@ -33,13 +33,21 @@ const Login = () => {
 
       if (response.ok) {
         const data = await response.json();
+        console.log(data.access);
+
+        // Save token and (optionally) the user name to localStorage
+        localStorage.setItem('token', data.access);
+        if (data.name) {
+          localStorage.setItem('userName', data.name);
+        }
+
         setSuccess('Login successful!');
 
-        // After successful login, navigate to the appropriate dashboard based on the role
+        // After successful login, navigate to the corresponding dashboard based on role
         if (role === 'employee') {
           navigate('/dashboard');
         } else if (role === 'employer') {
-          navigate('/Dashboard');
+          navigate('/employer-dashboard');
         } else if (role === 'ngo') {
           navigate('/ngo-dashboard');
         }
@@ -47,8 +55,8 @@ const Login = () => {
         setError('Invalid phone number or password.');
       }
     } catch (err) {
-      setError('An error occurred. Please try again later.');
       console.error(err);
+      setError('An error occurred. Please try again later.');
     } finally {
       setLoading(false);
     }
