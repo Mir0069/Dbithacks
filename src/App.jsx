@@ -28,8 +28,8 @@ function App() {
         <Route path='/signup' element={<SignUp/>}/>
         <Route path="/employerdashboard" element={<EmployerDashboard/>}/>
         <Route path='/myjobs' element={<MyJobs/>}/>
-        
 
+        
         <Route path='/login' element={<Login/>}/>
         
       </Routes>
