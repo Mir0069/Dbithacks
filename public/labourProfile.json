@@ -1,0 +1,10 @@
+{
+    "name": "Anil Baliram Mali",
+    "profession": "Electician",
+    "email": "Anilbaliam@example.com",
+    "phone": "9876543210",
+    "skills": ["Wiring & Cabling", "Appliance Repair", "Troubleshooting", "Electrical Safety"],
+    "experience": "5 years experience working with residential and commercial electrical systems.",
+    "location": "Mumbai, India",
+    "availability": "Full-time, available for urgent jobs"
+}

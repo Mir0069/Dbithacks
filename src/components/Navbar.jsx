@@ -71,6 +71,17 @@ const Navbar = () => {
           >
             Dashboard
           </NavLink>
+
+          <NavLink
+            to="/employerdashboard"
+            className={({ isActive }) =>
+              isActive
+                ? 'text-blue-400 px-3 py-2 text-md font-medium'
+                : 'text-gray-300 hover:text-blue-400 px-3 py-2 text-md font-medium'
+            }
+          >
+            Emp_Dashboard
+          </NavLink>
         </div>
       </div>
       
