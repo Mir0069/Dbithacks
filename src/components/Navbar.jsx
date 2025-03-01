@@ -40,7 +40,16 @@ const Navbar = () => {
           >
             Home
           </NavLink>
-        
+          <NavLink
+            to="/signup"
+            className={({ isActive }) =>
+              isActive
+                ? 'text-blue-400 px-3 py-2 text-md font-medium'
+                : 'text-gray-300 hover:text-blue-400 px-3 py-2 text-md font-medium'
+            }
+          >
+            Sign-Up
+            </NavLink>
           <NavLink
             to="/about"
             className={({ isActive }) =>
@@ -64,6 +73,7 @@ const Navbar = () => {
           </NavLink>
         </div>
       </div>
+      
 
     {/*Mobile Menu  */}
       {isOpen && (

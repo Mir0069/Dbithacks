@@ -3,9 +3,11 @@ import Navbar from './components/Navbar';
 import Home from './components/Home';
 import About from './components/About';
 import Dashboard from './components/Dashboard';
+import Mapcomp from './components/Mapcomp';
 import Apply from './components/Apply';
 import My_profile from './components/My_profile';
-import Settings from './components/Settings';
+import Settings from './components/Settings';import Mapcomp from './components/Mapcomp';
+import SignUp from './components/SignUp';
 function App() {
   return (
     <>
@@ -17,12 +19,14 @@ function App() {
         <Route path="/apply" element={<Apply/>}/>
         <Route path="/my_profile" element={<My_profile/>}/>
         <Route path="/settings" element={<Settings/>}/>
+        <Route path='/signup' element={<SignUp/>}/>
 
         
       </Routes>
+      {/* <Mapcomp></Mapcomp> */}
       <footer className="bg-gradient-to-r from-black to-gray-900 text-center py-4">
         <div className="container mx-auto">
-          <p className="text-gray-400">BuildAid © 2025</p>
+          <p className="text-gray-400">Shramik © 2025</p>
           <div className="mt-2 space-x-4">
             <a href="#" className="text-gray-400">Facebook</a>
             <a href="#" className="text-gray-400">Twitter</a>
