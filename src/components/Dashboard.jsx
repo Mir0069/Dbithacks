@@ -44,11 +44,8 @@ const Dashboard = () => {
                     transition={{ duration: 0.5, ease: "easeOut" }}
                     className="flex justify-between items-center bg-gradient-to-r from-blue-500 to-purple-500 p-4 rounded-lg shadow text-white"
                 >
-                    <h2 className="text-xl font-bold">Welcome, User!</h2>
-                    <div className="flex items-center space-x-4">
-                        <span>Username</span>
-                        <div className="w-10 h-10 bg-white rounded-full"></div>
-                    </div>
+                    <h2 className="text-xl font-bold">Welcome, Anil!</h2>
+                    
                 </motion.header>
 
                 {/* Analytics Section */}

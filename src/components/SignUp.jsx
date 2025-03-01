@@ -1,12 +1,15 @@
 import React, { useState } from 'react';
-import FindJobs from './Findjob'
-import Hiring from './Hiring'; // Make sure this file exists
-// import NGORegistration from './NGORegistration'; // Make sure this file exists
+import { motion } from 'framer-motion';
+import FindJobs from './Findjob';
+import Hiring from './Hiring';
+
+// Check if NGORegistration exists before using it
+// import NGORegistration from './NGORegistration';
 
 const SignUp = () => {
   const [currentComponent, setCurrentComponent] = useState(null);
 
-  // Render the selected component based on button click
+  // Render the selected component
   const renderComponent = () => {
     switch (currentComponent) {
       case 'findJobs':
@@ -14,39 +17,58 @@ const SignUp = () => {
       case 'hiring':
         return <Hiring />;
       case 'ngoRegistration':
-        return <NGORegistration />;
+        return <div className="text-gray-500">NGO Registration Coming Soon...</div>; 
       default:
         return (
-          <div className='space-y-4'>
-            <button
-              className='w-full px-4 py-3 bg-gray-200 text-gray-800 rounded-lg border border-gray-300 hover:bg-gray-300 transition duration-300'
-              onClick={() => setCurrentComponent('findJobs')}
-            >
-              Finding Jobs
-            </button>
-            <button
-              className='w-full px-4 py-3 bg-gray-200 text-gray-800 rounded-lg border border-gray-300 hover:bg-gray-300 transition duration-300'
-              onClick={() => setCurrentComponent('hiring')}
-            >
-              Hiring
-            </button>
-            <button
-              className='w-full px-4 py-3 bg-gray-200 text-gray-800 rounded-lg border border-gray-300 hover:bg-gray-300 transition duration-300'
-              onClick={() => setCurrentComponent('ngoRegistration')}
-            >
-              NGO Registration
-            </button>
-          </div>
+          <motion.div 
+            initial={{ opacity: 0, y: 10 }} 
+            animate={{ opacity: 1, y: 0 }} 
+            transition={{ duration: 0.5 }}
+            className="space-y-4"
+          >
+            {[
+              { label: 'Finding Jobs', key: 'findJobs' },
+              { label: 'Hiring', key: 'hiring' },
+              { label: 'NGO Registration', key: 'ngoRegistration' },
+            ].map((item, index) => (
+              <motion.button
+                key={item.key}
+                initial={{ scale: 0.9, opacity: 0 }}
+                animate={{ scale: 1, opacity: 1 }}
+                transition={{ duration: 0.3, delay: 0.1 * index }}
+                className="w-full px-5 py-3 bg-blue-500 text-white rounded-lg shadow-md hover:bg-blue-600 transition duration-300"
+                onClick={() => setCurrentComponent(item.key)}
+              >
+                {item.label}
+              </motion.button>
+            ))}
+          </motion.div>
         );
     }
   };
 
   return (
-    <div className='min-h-screen w-full flex items-center justify-center bg-gray-100'>
-      <div className='text-center bg-white p-6 rounded-lg shadow-md w-full max-w-md'>
-        <h1 className='text-2xl font-semibold mb-6 text-gray-700'>Sign Up</h1>
+    <div className="min-h-screen flex items-center justify-center bg-gray-100">
+      <motion.div 
+        initial={{ opacity: 0, scale: 0.9 }} 
+        animate={{ opacity: 1, scale: 1 }} 
+        transition={{ duration: 0.5, ease: "easeOut" }}
+        className="bg-white p-8 rounded-lg shadow-lg w-full max-w-md text-center"
+      >
+        <h1 className="text-3xl font-semibold mb-6 text-gray-700">Sign Up</h1>
         {renderComponent()}
-      </div>
+        {currentComponent && (
+          <motion.button
+            initial={{ opacity: 0 }}
+            animate={{ opacity: 1 }}
+            transition={{ duration: 0.3, delay: 0.2 }}
+            className="mt-4 px-5 py-2 bg-gray-300 text-gray-700 rounded-lg hover:bg-gray-400 transition"
+            onClick={() => setCurrentComponent(null)}
+          >
+            Back
+          </motion.button>
+        )}
+      </motion.div>
     </div>
   );
 };
