@@ -6,9 +6,14 @@ import Dashboard from './components/Dashboard';
 import Mapcomp from './components/Mapcomp';
 import Apply from './components/Apply';
 import My_profile from './components/My_profile';
+import Settings from './components/Settings';
 import Login from './components/Login';
 import Settings from './components/Settings';
+import Settings from './components/Settings';
 import SignUp from './components/SignUp';
+import EmployerDashboard from './components/EmployerDashboard';
+import MyJobs from './components/Myjobs';
+
 function App() {
   return (
     <>
@@ -21,6 +26,10 @@ function App() {
         <Route path="/my_profile" element={<My_profile/>}/>
         <Route path="/settings" element={<Settings/>}/>
         <Route path='/signup' element={<SignUp/>}/>
+        <Route path="/employerdashboard" element={<EmployerDashboard/>}/>
+        <Route path='/myjobs' element={<MyJobs/>}/>
+
+        
         <Route path='/login' element={<Login/>}/>
         
       </Routes>
