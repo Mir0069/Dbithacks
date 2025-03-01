@@ -1,5 +1,5 @@
 import React, { useState } from 'react';
-// import FindJobs from './FindJobs'; // Make sure this file exists
+import FindJobs from './Findjob'
 import Hiring from './Hiring'; // Make sure this file exists
 // import NGORegistration from './NGORegistration'; // Make sure this file exists
 
