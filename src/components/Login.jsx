@@ -26,6 +26,7 @@ const Login = () => {
       const response = await fetch('https://poetic-subtle-amoeba.ngrok-free.app/login/', {
         method: 'POST',
         headers: {
+          
           'Content-Type': 'application/json',
         },
         body: JSON.stringify(formData),
@@ -37,9 +38,7 @@ const Login = () => {
 
         // Save token and (optionally) the user name to localStorage
         localStorage.setItem('token', data.access);
-        if (data.name) {
-          localStorage.setItem('userName', data.name);
-        }
+        
 
         setSuccess('Login successful!');
 

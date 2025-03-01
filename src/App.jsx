@@ -46,7 +46,7 @@ function App() {
         <Route path='/login' element={<Login/>}/>
         
       </Routes>
-      <Mapcomp></Mapcomp>
+      
       <footer className="bg-gradient-to-r from-black to-gray-900 text-center py-4">
         <div className="container mx-auto">
           <p className="text-gray-400">Shramik © 2025</p>
