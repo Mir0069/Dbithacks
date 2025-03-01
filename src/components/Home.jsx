@@ -2,11 +2,12 @@ import React from "react";
 import { motion } from "framer-motion";
 import { FaHome, FaBriefcase, FaUsers, FaCog } from "react-icons/fa";
 import TextToSpeech from "./TextToSpeech";
+
 // Import SVG assets
 import CreateAccSVG from "../assets/createac.svg";
 import SearchWorkSVG from "../assets/searchw.svg";
 import SaveApplySVG from "../assets/saveapp.svg";
-
+import { useNavigate } from "react-router-dom";
 const Home = () => {
   const navigate = useNavigate();
   
