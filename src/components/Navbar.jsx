@@ -15,7 +15,7 @@ const Navbar = () => {
       <div className="flex items-center justify-between p-4">
         {/* Brand Name */}
         <div className="text-3xl font-extrabold text-white">
-          BuildAid
+          Shramik
         </div>
 
         {/* Hamburger Menu for Mobile */}
@@ -51,6 +51,17 @@ const Navbar = () => {
           >
             About
           </NavLink>
+
+          <NavLink
+            to="/dashboard"
+            className={({ isActive }) =>
+              isActive
+                ? 'text-blue-400 px-3 py-2 text-md font-medium'
+                : 'text-gray-300 hover:text-blue-400 px-3 py-2 text-md font-medium'
+            }
+          >
+            Dashboard
+          </NavLink>
         </div>
       </div>
 
@@ -79,6 +90,18 @@ const Navbar = () => {
             onClick={toggleMenu}
           >
             About
+          </NavLink>
+          {/* DASHBOARD */}
+          <NavLink
+            to="/dashboard"
+            className={({ isActive }) =>
+              isActive
+                ? 'text-blue-400 py-2 text-md font-medium'
+                : 'text-gray-300 hover:text-blue-400 py-2 text-md font-medium'
+            }
+            onClick={toggleMenu}
+          >
+            Dashboard
           </NavLink>
         </div>
       )}

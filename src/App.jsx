@@ -2,7 +2,10 @@ import { Route, Routes } from 'react-router-dom';
 import Navbar from './components/Navbar';
 import Home from './components/Home';
 import About from './components/About';
-
+import Dashboard from './components/Dashboard';
+import Apply from './components/Apply';
+import My_profile from './components/My_profile';
+import Settings from './components/Settings';
 function App() {
   return (
     <>
@@ -10,8 +13,10 @@ function App() {
       <Routes>
         <Route path="/" element={<Home />} />
         <Route path="/about" element={<About />} />
-        
-
+        <Route path="/dashboard/" element={<Dashboard/>}/>
+        <Route path="/apply" element={<Apply/>}/>
+        <Route path="/my_profile" element={<My_profile/>}/>
+        <Route path="/settings" element={<Settings/>}/>
 
         
       </Routes>
