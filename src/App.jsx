@@ -6,7 +6,7 @@ import Dashboard from './components/Dashboard';
 import Mapcomp from './components/Mapcomp';
 import Apply from './components/Apply';
 import My_profile from './components/My_profile';
-import Settings from './components/Settings';import Mapcomp from './components/Mapcomp';
+import Settings from './components/Settings';
 import SignUp from './components/SignUp';
 function App() {
   return (
