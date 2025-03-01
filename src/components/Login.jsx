@@ -37,9 +37,9 @@ const Login = () => {
 
         // After successful login, navigate to the appropriate dashboard based on the role
         if (role === 'employee') {
-          navigate('/empdashboard');
+          navigate('/dashboard');
         } else if (role === 'employer') {
-          navigate('/employer-dashboard');
+          navigate('/Dashboard');
         } else if (role === 'ngo') {
           navigate('/ngo-dashboard');
         }
