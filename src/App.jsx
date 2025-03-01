@@ -8,11 +8,13 @@ import Apply from './components/Apply';
 import My_profile from './components/My_profile';
 import Settings from './components/Settings';
 import Login from './components/Login';
+<<<<<<< HEAD
 
+=======
+>>>>>>> e6140dff6ee7df92759be435be95c2fda354ce79
 import SignUp from './components/SignUp';
 import EmployerDashboard from './components/EmployerDashboard';
 import MyJobs from './components/Myjobs';
-
 function App() {
   return (
     <>
