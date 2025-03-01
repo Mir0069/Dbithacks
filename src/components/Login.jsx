@@ -1,17 +1,21 @@
 import React, { useState } from 'react';
+import { useNavigate } from 'react-router-dom';
 
 const Login = () => {
   const [phoneNumber, setPhoneNumber] = useState('');
   const [password, setPassword] = useState('');
+  const [role, setRole] = useState('employee'); // Default role is 'employee'
   const [loading, setLoading] = useState(false);
   const [error, setError] = useState('');
   const [success, setSuccess] = useState('');
+  const navigate = useNavigate(); // Use react-router-dom's useNavigate for navigation
 
   const handleSubmit = async (e) => {
     e.preventDefault();
 
-    setLoading(true); // Set loading to true while making the request
-    setError(''); // Reset error state
+    setLoading(true);
+    setError('');
+    setSuccess('');
 
     const formData = {
       phone_number: phoneNumber,
@@ -23,26 +27,30 @@ const Login = () => {
         method: 'POST',
         headers: {
           'Content-Type': 'application/json',
-          
         },
         body: JSON.stringify(formData),
       });
 
-      // Handle success response
       if (response.ok) {
-        const data = await response.json(); // Assuming a JSON response
+        const data = await response.json();
         setSuccess('Login successful!');
-        console.log(data); // Handle the response data
+
+        // After successful login, navigate to the appropriate dashboard based on the role
+        if (role === 'employee') {
+          navigate('/empdashboard');
+        } else if (role === 'employer') {
+          navigate('/employer-dashboard');
+        } else if (role === 'ngo') {
+          navigate('/ngo-dashboard');
+        }
       } else {
-        // Handle error response
         setError('Invalid phone number or password.');
       }
     } catch (err) {
-      // Handle network or other errors
       setError('An error occurred. Please try again later.');
       console.error(err);
     } finally {
-      setLoading(false); // Set loading to false after the request is completed
+      setLoading(false);
     }
   };
 
@@ -70,7 +78,7 @@ const Login = () => {
             />
           </div>
 
-          <div className="mb-6">
+          <div className="mb-4">
             <label htmlFor="password" className="block text-sm font-medium text-gray-700">
               Password
             </label>
@@ -83,6 +91,23 @@ const Login = () => {
               className="mt-2 p-3 w-full border border-gray-300 rounded-lg"
               placeholder="Enter password"
             />
+          </div>
+
+          {/* Dropdown for Role Selection */}
+          <div className="mb-6">
+            <label htmlFor="role" className="block text-sm font-medium text-gray-700">
+              Select Role
+            </label>
+            <select
+              id="role"
+              value={role}
+              onChange={(e) => setRole(e.target.value)}
+              className="mt-2 p-3 w-full border border-gray-300 rounded-lg"
+            >
+              <option value="employee">Employee</option>
+              <option value="employer">Employer</option>
+              <option value="ngo">NGO</option>
+            </select>
           </div>
 
           <button
