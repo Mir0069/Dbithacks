@@ -8,10 +8,6 @@ import Apply from './components/Apply';
 import My_profile from './components/My_profile';
 import Settings from './components/Settings';
 import Login from './components/Login';
-<<<<<<< HEAD
-
-=======
->>>>>>> 8f521f7cf85881a0307f59cd6eb899991d0bafa7
 import SignUp from './components/SignUp';
 import EmployerDashboard from './components/EmployerDashboard';
 import MyJobs from './components/Myjobs';
@@ -50,7 +46,7 @@ function App() {
         <Route path='/login' element={<Login/>}/>
         
       </Routes>
-      <Mapcomp></Mapcomp>
+      
       <footer className="bg-gradient-to-r from-black to-gray-900 text-center py-4">
         <div className="container mx-auto">
           <p className="text-gray-400">Shramik © 2025</p>

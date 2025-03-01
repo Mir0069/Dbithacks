@@ -12,6 +12,7 @@
   "dependencies": {
     "@tailwindcss/vite": "^4.0.9",
     "js-cookie": "^3.0.5",
+    "jwt-decode": "^4.0.0",
     "leaflet": "^1.9.4",
     "motion": "^12.4.7",
     "react": "^19.0.0",

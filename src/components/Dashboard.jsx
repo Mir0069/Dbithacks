@@ -3,12 +3,18 @@ import { FaUserMd, FaChartPie, FaCog } from "react-icons/fa";
 import { motion } from "framer-motion";
 import jobsData from "./jobs.json"; // Import JSON directly
 import { NavLink } from "react-router-dom";
+import { useContext } from "react";
+import { SuccessContext } from "../context/Successcontext";
 import Cookies from "js-cookie"; // You will use js-cookie to access cookies
 
 const Dashboard = ({User,setUser}) => {
     const [jobs, setJobs] = useState([]);
     const [userName, setUserName] = useState(''); // State to hold the user's name
-    const [loading, setLoading] = useState(true); // To handle loading state
+
+    const  Context  = useContext(SuccessContext); // To handle loading state
+    const { success, setSuccess } = Context;
+    
+const [loading, setLoading] = useState(false);
     const [error, setError] = useState(''); // To handle errors if any
 
     useEffect(() => {
@@ -108,7 +114,7 @@ const Dashboard = ({User,setUser}) => {
 
                 {/* Analytics Section */}
                 <div className="grid grid-cols-2 gap-6 mt-6">
-                    <motion.div
+                    <motion.div  
                         initial={{ opacity: 0, y: 20 }}
                         animate={{ opacity: 1, y: 0 }}
                         transition={{ duration: 0.5, delay: 0.3 }}
