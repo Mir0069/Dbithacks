@@ -1,6 +1,7 @@
 import React from "react";
 import { motion } from "framer-motion";
 import { FaHome, FaBriefcase, FaUsers, FaCog } from "react-icons/fa";
+import TextToSpeech from "./TextToSpeech";
 // Import SVG assets
 import CreateAccSVG from "../assets/createac.svg";
 import SearchWorkSVG from "../assets/searchw.svg";
@@ -104,6 +105,7 @@ const Home = () => {
           <p className="text-gray-600 italic">"Thanks to Shramik, I upskilled and now earn better than ever."</p>
         </motion.div>
       </div>
+      
     </div>
   );
 };

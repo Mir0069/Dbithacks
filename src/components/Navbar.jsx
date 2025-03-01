@@ -2,6 +2,7 @@ import React, { useState } from 'react';
 import { NavLink } from 'react-router-dom';
 import { FaBars, FaTimes } from 'react-icons/fa'; // Icons for hamburger and close
 import GoogleTranslate from './GoogleTranslate';
+import TextToSpeech from './TextToSpeech';
 const Navbar = () => {
   const [isOpen, setIsOpen] = useState(false); // State to handle hamburger menu toggle
 
@@ -29,7 +30,7 @@ const Navbar = () => {
         </div>
 
         {/* Links for larger screens */}
-        <div className="hidden sm:flex space-x-4">
+        <div className="hidden sm:flex space-x-4 items-center">
           <NavLink
             to="/"
             className={({ isActive }) =>
@@ -85,6 +86,9 @@ const Navbar = () => {
           <nav >
             <GoogleTranslate />
           </nav>
+          <div className="">
+            <TextToSpeech />
+          </div>
         </div>
       </div>
 
