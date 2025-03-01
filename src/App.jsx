@@ -2,7 +2,7 @@ import { Route, Routes } from 'react-router-dom';
 import Navbar from './components/Navbar';
 import Home from './components/Home';
 import About from './components/About';
-
+import Mapcomp from './components/Mapcomp';
 function App() {
   return (
     <>
@@ -15,6 +15,7 @@ function App() {
 
         
       </Routes>
+      <Mapcomp></Mapcomp>
       <footer className="bg-gradient-to-r from-black to-gray-900 text-center py-4">
         <div className="container mx-auto">
           <p className="text-gray-400">BuildAid © 2025</p>

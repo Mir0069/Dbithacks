@@ -53,6 +53,7 @@ const Navbar = () => {
           </NavLink>
         </div>
       </div>
+      
 
     {/*Mobile Menu  */}
       {isOpen && (
