@@ -3,7 +3,6 @@ import { FaUserMd, FaChartPie, FaCog } from "react-icons/fa";
 import { motion } from "framer-motion";
 import jobsData from "./jobs.json"; // Import JSON directly
 import { NavLink } from "react-router-dom";
-import Cookies from "js-cookie"; // You will use js-cookie to access cookies
 
 const Dashboard = ({User,setUser}) => {
     const [jobs, setJobs] = useState([]);
