@@ -1,6 +1,8 @@
 import React from "react";
 import { motion } from "framer-motion";
-import { useNavigate } from "react-router-dom";
+import { FaHome, FaBriefcase, FaUsers, FaCog } from "react-icons/fa";
+import TextToSpeech from "./TextToSpeech";
+// Import SVG assets
 import CreateAccSVG from "../assets/createac.svg";
 import SearchWorkSVG from "../assets/searchw.svg";
 import SaveApplySVG from "../assets/saveapp.svg";
@@ -87,6 +89,7 @@ const Home = () => {
           </div>
         </section>
       </div>
+      
     </div>
   );
 };

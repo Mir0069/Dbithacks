@@ -2,9 +2,7 @@ import React, { useState, useEffect, useContext } from 'react';
 import { NavLink } from 'react-router-dom';
 import { FaBars, FaTimes, FaUser, FaSignOutAlt } from 'react-icons/fa';
 import GoogleTranslate from './GoogleTranslate';
-import { SuccessContext } from '../context/Successcontext';
-import { jwtDecode } from 'jwt-decode';
-
+import TextToSpeech from './TextToSpeech';
 const Navbar = () => {
   const [isOpen, setIsOpen] = useState(false);
   const [isLoggedIn, setIsLoggedIn] = useState(false);
@@ -47,24 +45,66 @@ console.log(success)
           </button>
         </div>
 
-        <div className="hidden sm:flex space-x-4">
-          <NavLink to="/" className={({ isActive }) => isActive ? 'text-blue-400 px-3 py-2 text-md font-medium' : 'text-gray-300 hover:text-blue-400 px-3 py-2 text-md font-medium'}>Home</NavLink>
-          <NavLink to="/signup" className={({ isActive }) => isActive ? 'text-blue-400 px-3 py-2 text-md font-medium' : 'text-gray-300 hover:text-blue-400 px-3 py-2 text-md font-medium'}>Sign-Up</NavLink>
-          <NavLink to="/about" className={({ isActive }) => isActive ? 'text-blue-400 px-3 py-2 text-md font-medium' : 'text-gray-300 hover:text-blue-400 px-3 py-2 text-md font-medium'}>About</NavLink>
-          {success && (
-            <>
-              <NavLink to="/dashboard" className={({ isActive }) => isActive ? 'text-blue-400 px-3 py-2 text-md font-medium' : 'text-gray-300 hover:text-blue-400 px-3 py-2 text-md font-medium'}>Dashboard</NavLink>
-              <NavLink to="/employerdashboard" className={({ isActive }) => isActive ? 'text-blue-400 px-3 py-2 text-md font-medium' : 'text-gray-300 hover:text-blue-400 px-3 py-2 text-md font-medium'}>Emp_Dashboard</NavLink>
-            </>
-          )}
-          {isLoggedIn ? (
-            <button onClick={handleLogout} className="text-gray-300 hover:text-red-400 px-3 py-2 text-md font-medium flex items-center">
-              <FaSignOutAlt className="mr-2" /> Logout
-            </button>
-          ) : (
-            <NavLink to="/login" className={({ isActive }) => isActive ? 'text-blue-400 px-3 py-2 text-md font-medium' : 'text-gray-300 hover:text-blue-400 px-3 py-2 text-md font-medium'}>Log In</NavLink>
-          )}
-          <GoogleTranslate />
+        {/* Links for larger screens */}
+        <div className="hidden sm:flex space-x-4 items-center">
+          <NavLink
+            to="/"
+            className={({ isActive }) =>
+              isActive
+                ? 'text-blue-400 px-3 py-2 text-md font-medium'
+                : 'text-gray-300 hover:text-blue-400 px-3 py-2 text-md font-medium'
+            }
+          >
+            Home
+          </NavLink>
+          <NavLink
+            to="/signup"
+            className={({ isActive }) =>
+              isActive
+                ? 'text-blue-400 px-3 py-2 text-md font-medium'
+                : 'text-gray-300 hover:text-blue-400 px-3 py-2 text-md font-medium'
+            }
+          >
+            Sign-Up
+          </NavLink>
+          <NavLink
+            to="/about"
+            className={({ isActive }) =>
+              isActive
+                ? 'text-blue-400 px-3 py-2 text-md font-medium'
+                : 'text-gray-300 hover:text-blue-400 px-3 py-2 text-md font-medium'
+            }
+          >
+            About
+          </NavLink>
+
+          <NavLink
+            to="/dashboard"
+            className={({ isActive }) =>
+              isActive
+                ? 'text-blue-400 px-3 py-2 text-md font-medium'
+                : 'text-gray-300 hover:text-blue-400 px-3 py-2 text-md font-medium'
+            }
+          >
+            Dashboard
+          </NavLink>
+
+          <NavLink
+            to="/employerdashboard"
+            className={({ isActive }) =>
+              isActive
+                ? 'text-blue-400 px-3 py-2 text-md font-medium'
+                : 'text-gray-300 hover:text-blue-400 px-3 py-2 text-md font-medium'
+            }
+          >
+            Emp_Dashboard
+          </NavLink>
+          <nav >
+            <GoogleTranslate />
+          </nav>
+          <div className="">
+            <TextToSpeech />
+          </div>
         </div>
       </div>
 
