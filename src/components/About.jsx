@@ -4,13 +4,13 @@ import { motion } from "framer-motion";
 
 const About = () => {
     return (
-        <div className="flex min-h-screen bg-gray-100">
-            {/* Sidebar */}
+        <div className="flex flex-col md:flex-row min-h-screen bg-gray-100">
+            {/* Sidebar for Larger Screens */}
             <motion.aside
                 initial={{ x: -100, opacity: 0 }}
                 animate={{ x: 0, opacity: 1 }}
                 transition={{ duration: 0.5, ease: "easeOut" }}
-                className="w-64 bg-gradient-to-b from-blue-500 to-purple-500 text-white p-6 shadow-md"
+                className="hidden md:flex flex-col w-64 bg-gradient-to-b from-blue-500 to-purple-500 text-white p-6 shadow-md"
             >
                 <h1 className="text-xl font-bold mb-8 flex items-center space-x-3">
                     <FaInfoCircle />
@@ -28,18 +28,18 @@ const About = () => {
                 </nav>
             </motion.aside>
 
+            {/* Mobile Navigation (Replaces Sidebar on Small Screens) */}
+            <motion.div
+                initial={{ y: -20, opacity: 0 }}
+                animate={{ y: 0, opacity: 1 }}
+                transition={{ duration: 0.5, ease: "easeOut" }}
+                className="md:hidden flex justify-between items-center bg-gradient-to-r from-blue-500 to-purple-500 p-4 rounded-lg shadow text-white"
+            >
+                <h2 className="text-xl font-bold">About Our Platform</h2>
+            </motion.div>
+
             {/* Main Content */}
             <div className="flex-1 p-6">
-                {/* Top Navbar */}
-                <motion.header
-                    initial={{ y: -20, opacity: 0 }}
-                    animate={{ y: 0, opacity: 1 }}
-                    transition={{ duration: 0.5, ease: "easeOut" }}
-                    className="flex justify-between items-center bg-gradient-to-r from-blue-500 to-purple-500 p-4 rounded-lg shadow text-white"
-                >
-                    <h2 className="text-xl font-bold">About Our Platform</h2>
-                </motion.header>
-
                 {/* About Section */}
                 <motion.div
                     initial={{ opacity: 0, y: 20 }}
@@ -54,7 +54,7 @@ const About = () => {
                 </motion.div>
 
                 {/* Mission & Vision */}
-                <div className="grid grid-cols-2 gap-6 mt-6">
+                <div className="grid grid-cols-1 md:grid-cols-2 gap-6 mt-6">
                     <motion.div
                         initial={{ opacity: 0, y: 20 }}
                         animate={{ opacity: 1, y: 0 }}
@@ -95,18 +95,20 @@ const About = () => {
                 >
                     <h3 className="text-2xl font-bold mb-4 text-blue-500">What We Offer</h3>
                     <ul className="list-disc list-inside text-gray-700 space-y-2">
-                        <motion.li whileHover={{ scale: 1.05, color: "#2563EB" }} transition={{ duration: 0.2 }}>
-                            Job matching for skilled laborers.
-                        </motion.li>
-                        <motion.li whileHover={{ scale: 1.05, color: "#2563EB" }} transition={{ duration: 0.2 }}>
-                            Training and skill development programs.
-                        </motion.li>
-                        <motion.li whileHover={{ scale: 1.05, color: "#2563EB" }} transition={{ duration: 0.2 }}>
-                            Secure payment and attendance tracking.
-                        </motion.li>
-                        <motion.li whileHover={{ scale: 1.05, color: "#2563EB" }} transition={{ duration: 0.2 }}>
-                            Worker protection and safety features.
-                        </motion.li>
+                        {[
+                            "Job matching for skilled laborers.",
+                            "Training and skill development programs.",
+                            "Secure payment and attendance tracking.",
+                            "Worker protection and safety features."
+                        ].map((item, index) => (
+                            <motion.li
+                                key={index}
+                                whileHover={{ scale: 1.05, color: "#2563EB" }}
+                                transition={{ duration: 0.2 }}
+                            >
+                                {item}
+                            </motion.li>
+                        ))}
                     </ul>
                 </motion.div>
             </div>
