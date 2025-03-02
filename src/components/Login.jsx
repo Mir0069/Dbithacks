@@ -57,7 +57,7 @@ const Login = () => {
         transition={{ duration: 0.5, ease: "easeOut" }}
         className="bg-white p-8 rounded-lg shadow-lg w-full max-w-md text-center"
       >
-        <h1 className="text-3xl font-semibold mb-6 text-gray-700">Sign Up</h1>
+        <h1 className="text-3xl font-semibold mb-6 text-gray-700">Log In</h1>
         {renderComponent()}
         {currentComponent && (
           <motion.button

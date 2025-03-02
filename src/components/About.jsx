@@ -6,28 +6,7 @@ const About = () => {
     return (
         <div className="flex flex-col md:flex-row min-h-screen bg-gray-100">
             {/* Sidebar for Larger Screens */}
-            <motion.aside
-                initial={{ x: -100, opacity: 0 }}
-                animate={{ x: 0, opacity: 1 }}
-                transition={{ duration: 0.5, ease: "easeOut" }}
-                className="hidden md:flex flex-col w-64 bg-gradient-to-b from-blue-500 to-purple-500 text-white p-6 shadow-md"
-            >
-                <h1 className="text-xl font-bold mb-8 flex items-center space-x-3">
-                    <FaInfoCircle />
-                    <span>About Us</span>
-                </h1>
-                <nav className="space-y-4">
-                    <div className="px-3 py-2 text-md font-medium flex items-center space-x-3 hover:text-gray-200 transition">
-                        <FaBullseye />
-                        <span>Our Mission</span>
-                    </div>
-                    <div className="px-3 py-2 text-md font-medium flex items-center space-x-3 hover:text-gray-200 transition">
-                        <FaLightbulb />
-                        <span>Our Vision</span>
-                    </div>
-                </nav>
-            </motion.aside>
-
+            
             {/* Mobile Navigation (Replaces Sidebar on Small Screens) */}
             <motion.div
                 initial={{ y: -20, opacity: 0 }}

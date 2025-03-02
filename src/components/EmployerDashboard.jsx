@@ -55,10 +55,7 @@ const EmployerDashboard = () => {
                     className="flex justify-between items-center bg-gradient-to-r from-blue-500 to-purple-500 p-4 rounded-lg shadow text-white"
                 >
                     <h2 className="text-xl font-bold">Welcome, Employer!</h2>
-                    <div className="flex items-center space-x-4">
-                        <span>Employer Name</span>
-                        <div className="w-10 h-10 bg-white rounded-full"></div>
-                    </div>
+                    
                 </motion.header>
 
                 {/* Analytics Section */}
