@@ -54,9 +54,10 @@ const Navbar = () => {
         fetchUserData();
     }, []);
 
+    // ✅ Ensures navigation only runs when necessary
     useEffect(() => {
         if (isLoggedIn) {
-            navigate("/dashboard"); // Redirect to dashboard on login
+            navigate("/dashboard");
         }
     }, [isLoggedIn, navigate]);
 
@@ -68,7 +69,7 @@ const Navbar = () => {
     };
 
     return (
-        <nav key={isLoggedIn} className="bg-gray-900 shadow-md">
+        <nav className="bg-gray-900 shadow-md">
             <div className="flex items-center justify-between p-4">
                 <div className="text-3xl font-extrabold text-white">Shramik</div>
 
@@ -86,15 +87,17 @@ const Navbar = () => {
                         About
                     </NavLink>
 
+                    {/* ✅ Show Dashboard only when logged in, but keep other links visible */}
+                    {isLoggedIn && (
+                        <NavLink to="/dashboard" className="text-gray-300 hover:text-blue-400 px-3 py-2 text-md font-medium">
+                            Dashboard
+                        </NavLink>
+                    )}
+
                     {isLoggedIn ? (
-                        <>
-                            <NavLink to="/dashboard" className="text-gray-300 hover:text-blue-400 px-3 py-2 text-md font-medium">
-                                Dashboard
-                            </NavLink>
-                            <button onClick={handleLogout} className="text-gray-300 hover:text-red-400 px-3 py-2 text-md font-medium flex items-center">
-                                <FaSignOutAlt className="mr-2" /> Logout
-                            </button>
-                        </>
+                        <button onClick={handleLogout} className="text-gray-300 hover:text-red-400 px-3 py-2 text-md font-medium flex items-center">
+                            <FaSignOutAlt className="mr-2" /> Logout
+                        </button>
                     ) : (
                         <>
                             <NavLink to="/signup" className="text-gray-300 hover:text-blue-400 px-3 py-2 text-md font-medium">
@@ -121,15 +124,16 @@ const Navbar = () => {
                         About
                     </NavLink>
 
+                    {isLoggedIn && (
+                        <NavLink to="/dashboard" className="text-gray-300 hover:text-blue-400 py-2 text-md font-medium" onClick={() => setIsOpen(false)}>
+                            Dashboard
+                        </NavLink>
+                    )}
+
                     {isLoggedIn ? (
-                        <>
-                            <NavLink to="/dashboard" className="text-gray-300 hover:text-blue-400 py-2 text-md font-medium" onClick={() => setIsOpen(false)}>
-                                Dashboard
-                            </NavLink>
-                            <button onClick={() => { handleLogout(); setIsOpen(false); }} className="text-gray-300 hover:text-red-400 py-2 text-md font-medium flex items-center">
-                                <FaSignOutAlt className="mr-2" /> Logout
-                            </button>
-                        </>
+                        <button onClick={() => { handleLogout(); setIsOpen(false); }} className="text-gray-300 hover:text-red-400 py-2 text-md font-medium flex items-center">
+                            <FaSignOutAlt className="mr-2" /> Logout
+                        </button>
                     ) : (
                         <>
                             <NavLink to="/signup" className="text-gray-300 hover:text-blue-400 py-2 text-md font-medium" onClick={() => setIsOpen(false)}>

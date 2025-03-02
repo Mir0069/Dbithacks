@@ -11,6 +11,7 @@ const SignUp = () => {
 
   // Render the selected component
   const renderComponent = () => {
+    
     switch (currentComponent) {
       case 'findJobs':
         return <FindJobs />;
@@ -38,7 +39,7 @@ const SignUp = () => {
                 transition={{ duration: 0.3, delay: 0.1 * index }}
                 className="w-full px-5 py-3 bg-blue-500 text-white rounded-lg shadow-md hover:bg-blue-600 transition duration-300"
                 onClick={() => setCurrentComponent(item.key)}
-              >
+              >C
                 {item.label}
               </motion.button>
             ))}

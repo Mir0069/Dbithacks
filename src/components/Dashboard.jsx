@@ -1,65 +1,61 @@
-import React, { useState, useEffect } from "react";
+import React, { useState, useEffect, useContext } from "react";
 import { FaUserMd, FaChartPie, FaCog } from "react-icons/fa";
 import { motion } from "framer-motion";
-import jobsData from "./jobs.json"; // Import JSON directly
-import { NavLink } from "react-router-dom";
-import { useContext } from "react";
+import jobsData from "./jobs.json";
+import { NavLink, useNavigate } from "react-router-dom";
 import { SuccessContext } from "../context/Successcontext";
-import Cookies from "js-cookie"; // You will use js-cookie to access cookies
 import Mapcomp from "./Mapcomp";
 
-const Dashboard = ({User,setUser}) => {
+const Dashboard = ({ User, setUser }) => {
     const [jobs, setJobs] = useState([]);
-    const [userName, setUserName] = useState(''); // State to hold the user's name
-
-    const  Context  = useContext(SuccessContext); // To handle loading state
-    const { success, setSuccess } = Context;
-    
-const [loading, setLoading] = useState(false);
-    const [error, setError] = useState(''); // To handle errors if any
+    const [userName, setUserName] = useState("User");
+    const { success, setSuccess } = useContext(SuccessContext);
+    const [loading, setLoading] = useState(true);
+    const [error, setError] = useState("");
+    const navigate = useNavigate();
 
     useEffect(() => {
-        setJobs(jobsData); // Load jobs from JSON
-        
+        setJobs(jobsData);
+
         const fetchUserData = async () => {
-            const token = localStorage.getItem('token');
-            
+            const token = localStorage.getItem("token");
+
             if (!token) {
-                console.error('No token found');
-                setError('No token found, please log in again.');
-                setLoading(false);
+                console.error("No token found");
+                setError("No token found, please log in again.");
+                navigate("/login");
                 return;
             }
-            console.log(token)
-    
+
             try {
-                const response = await fetch('https://poetic-subtle-amoeba.ngrok-free.app/dashboard/', {
-                    method: 'GET',
+                const response = await fetch("https://poetic-subtle-amoeba.ngrok-free.app/dashboard/", {
+                    method: "GET",
                     headers: {
-                        'Authorization': `Bearer ${token}`,
-                        'Content-Type': 'application/json',
-                        'ngrok-skip-browser-warning': 'true',
+                        Authorization: `Bearer ${token}`,
+                        "Content-Type": "application/json",
+                        "ngrok-skip-browser-warning": "true",
                     },
                 });
 
-    
                 if (response.ok) {
                     const data = await response.json();
-                    setUserName(data.first_name || 'User');
+                    setUserName(data.first_name || "User");
+                    if (setUser) setUser(data);
                 } else {
-                    console.error('Failed to fetch data');
-                    setError('Failed to load user data');
+                    console.error("Failed to fetch data");
+                    setError("Failed to load user data");
+                    navigate("/login"); // Redirect to login if fetch fails
                 }
             } catch (error) {
-                console.error('Error fetching data:', error);
-                setError('Error fetching data. Please try again later.');
+                console.error("Error fetching data:", error);
+                setError("Error fetching data. Please try again later.");
             } finally {
                 setLoading(false);
             }
         };
-    
+
         fetchUserData();
-    }, []);
+    }, [navigate, setUser]);
 
     return (
         <div className="flex max-h-min bg-gray-100">
@@ -70,7 +66,7 @@ const [loading, setLoading] = useState(false);
                 transition={{ duration: 0.5, ease: "easeOut" }}
                 className="w-64 bg-gradient-to-b from-blue-500 to-purple-500 text-white p-6 shadow-md"
             >
-                <h1 className="text-xl font-bold text-white mb-8 flex items-center space-x-3">
+                <h1 className="text-xl font-bold mb-8 flex items-center space-x-3">
                     <FaChartPie /> <span>Dashboard</span>
                 </h1>
                 <nav className="space-y-4">
@@ -108,7 +104,7 @@ const [loading, setLoading] = useState(false);
                         Welcome, {userName}
                     </h2>
                     <div className="flex items-center space-x-4">
-                        <span>userName</span>
+                        <span>{userName}</span>
                         <div className="w-10 h-10 bg-white rounded-full"></div>
                     </div>
                 </motion.header>
@@ -184,21 +180,18 @@ const [loading, setLoading] = useState(false);
                                     ))
                                 ) : (
                                     <tr>
-                                        <td colSpan="5" className="text-center py-4">
-                                            No jobs available.
-                                        </td>
+                                        <td colSpan="5" className="text-center py-4">No jobs available.</td>
                                     </tr>
                                 )}
                             </tbody>
                         </table>
                     </div>
                 </motion.div>
-                <div className="p-16 rounded-2xl">
-    <Mapcomp className="w-full h-full rounded-3xl" />
-</div>
 
+                <div className="p-16 rounded-2xl">
+                    <Mapcomp className="w-full h-full rounded-3xl" />
+                </div>
             </div>
-            
         </div>
     );
 };
