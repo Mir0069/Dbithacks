@@ -7,6 +7,7 @@ import { SuccessContext } from "../context/Successcontext";
 import Mapcomp from "./Mapcomp";
 
 const Dashboard = ({ User, setUser }) => {
+const Dashboard = ({ User, setUser }) => {
     const [jobs, setJobs] = useState([]);
     const [filteredJobs, setFilteredJobs] = useState([]);
     const [searchQuery, setSearchQuery] = useState("");
@@ -26,6 +27,8 @@ const Dashboard = ({ User, setUser }) => {
         const fetchUserData = async () => {
             const token = localStorage.getItem("token");
 
+            const token = localStorage.getItem("token");
+
             if (!token) {
                 console.error("No token found");
                 setError("No token found, please log in again.");
@@ -33,15 +36,22 @@ const Dashboard = ({ User, setUser }) => {
                 return;
             }
 
+
             try {
+                const response = await fetch("https://poetic-subtle-amoeba.ngrok-free.app/dashboard/", {
+                    method: "GET",
                 const response = await fetch("https://poetic-subtle-amoeba.ngrok-free.app/dashboard/", {
                     method: "GET",
                     headers: {
                         Authorization: `Bearer ${token}`,
                         "Content-Type": "application/json",
                         "ngrok-skip-browser-warning": "true",
+                        Authorization: `Bearer ${token}`,
+                        "Content-Type": "application/json",
+                        "ngrok-skip-browser-warning": "true",
                     },
                 });
+
 
                 if (response.ok) {
                     const data = await response.json();
@@ -53,10 +63,13 @@ const Dashboard = ({ User, setUser }) => {
             } catch (error) {
                 console.error("Error fetching data:", error);
                 setError("Error fetching data. Please try again later.");
+                console.error("Error fetching data:", error);
+                setError("Error fetching data. Please try again later.");
             } finally {
                 setLoading(false);
             }
         };
+
 
         fetchUserData();
     }, []);
@@ -204,3 +217,4 @@ const Dashboard = ({ User, setUser }) => {
 };
 
 export default Dashboard;
+

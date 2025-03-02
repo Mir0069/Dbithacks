@@ -51,9 +51,10 @@ const Navbar = () => {
         fetchUserData();
     }, []);
 
+    // ✅ Ensures navigation only runs when necessary
     useEffect(() => {
         if (isLoggedIn) {
-            navigate("/dashboard"); // Redirect to dashboard on login
+            navigate("/dashboard");
         }
     }, [isLoggedIn, navigate]);
 
@@ -65,7 +66,7 @@ const Navbar = () => {
     };
 
     return (
-        <nav key={isLoggedIn} className="bg-gray-900 shadow-md">
+        <nav className="bg-gray-900 shadow-md">
             <div className="flex items-center justify-between p-4">
                 {/* Brand Name */}
                 <div className="text-3xl font-extrabold text-white">Shramik</div>
