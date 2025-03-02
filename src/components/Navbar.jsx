@@ -100,13 +100,12 @@ console.log(success)
           >
             Emp_Dashboard
           </NavLink>
-          <nav >
+          
+        </div>
+          <div className="flex justify-center items-center gap-3 ">
             <GoogleTranslate />
-          </nav>
-          <div className="">
             <TextToSpeech />
           </div>
-        </div>
       </div>
 
       {isOpen && (
