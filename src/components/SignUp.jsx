@@ -2,13 +2,12 @@ import React, { useState } from 'react';
 import { motion } from 'framer-motion';
 import FindJobs from './Findjob';
 import Hiring from './Hiring';
-
 // Check if NGORegistration exists before using it
 // import NGORegistration from './NGORegistration';
 
 const SignUp = () => {
   const [currentComponent, setCurrentComponent] = useState(null);
-
+  
   // Render the selected component
   const renderComponent = () => {
     

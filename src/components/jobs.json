@@ -1,24 +1,156 @@
 [
-    {
-      "title": "Electrician",
-      "location": "Mumbai",
-      "salary": "1000 rs",
-      "date": "25/03/2025",
-      "applyLink": "https://apply.example.com/electrician"
-    },
-    {
-      "title": "Plumber",
-      "location": "Delhi",
-      "salary": "1200 rs",
-      "date": "28/03/2025",
-      "applyLink": "https://apply.example.com/plumber"
-    },
-    {
-      "title": "Carpenter",
-      "location": "Bangalore",
-      "salary": "1500 rs",
-      "date": "30/03/2025",
-      "applyLink": "https://apply.example.com/carpenter"
-    }
-  ]
-  
+  {
+    "title": "Electrician",
+    "location": "Mumbai",
+    "salary": "1000 rs",
+    "date": "25/03/2025",
+    "applyLink": "https://apply.example.com/electrician"
+  },
+  {
+    "title": "Plumber",
+    "location": "Delhi",
+    "salary": "1200 rs",
+    "date": "28/03/2025",
+    "applyLink": "https://apply.example.com/plumber"
+  },
+  {
+    "title": "Carpenter",
+    "location": "Bangalore",
+    "salary": "1500 rs",
+    "date": "30/03/2025",
+    "applyLink": "https://apply.example.com/carpenter"
+  },
+  {
+    "title": "Welder",
+    "location": "Chennai",
+    "salary": "1800 rs",
+    "date": "01/04/2025",
+    "applyLink": "https://apply.example.com/welder"
+  },
+  {
+    "title": "Mason",
+    "location": "Kolkata",
+    "salary": "2000 rs",
+    "date": "03/04/2025",
+    "applyLink": "https://apply.example.com/mason"
+  },
+  {
+    "title": "Painter",
+    "location": "Hyderabad",
+    "salary": "2200 rs",
+    "date": "05/04/2025",
+    "applyLink": "https://apply.example.com/painter"
+  },
+  {
+    "title": "Mechanic",
+    "location": "Pune",
+    "salary": "2500 rs",
+    "date": "07/04/2025",
+    "applyLink": "https://apply.example.com/mechanic"
+  },
+  {
+    "title": "Security Guard",
+    "location": "Ahmedabad",
+    "salary": "1700 rs",
+    "date": "09/04/2025",
+    "applyLink": "https://apply.example.com/security-guard"
+  },
+  {
+    "title": "Housekeeper",
+    "location": "Jaipur",
+    "salary": "1300 rs",
+    "date": "11/04/2025",
+    "applyLink": "https://apply.example.com/housekeeper"
+  },
+  {
+    "title": "Delivery Boy",
+    "location": "Lucknow",
+    "salary": "1600 rs",
+    "date": "13/04/2025",
+    "applyLink": "https://apply.example.com/delivery-boy"
+  },
+  {
+    "title": "Factory Worker",
+    "location": "Chandigarh",
+    "salary": "1900 rs",
+    "date": "15/04/2025",
+    "applyLink": "https://apply.example.com/factory-worker"
+  },
+  {
+    "title": "Data Entry Operator",
+    "location": "Indore",
+    "salary": "1400 rs",
+    "date": "17/04/2025",
+    "applyLink": "https://apply.example.com/data-entry"
+  },
+  {
+    "title": "Driver",
+    "location": "Bhopal",
+    "salary": "2100 rs",
+    "date": "19/04/2025",
+    "applyLink": "https://apply.example.com/driver"
+  },
+  {
+    "title": "Tailor",
+    "location": "Nagpur",
+    "salary": "1500 rs",
+    "date": "21/04/2025",
+    "applyLink": "https://apply.example.com/tailor"
+  },
+  {
+    "title": "Chef",
+    "location": "Patna",
+    "salary": "2500 rs",
+    "date": "23/04/2025",
+    "applyLink": "https://apply.example.com/chef"
+  },
+  {
+    "title": "Electrician",
+    "location": "Surat",
+    "salary": "2000 rs",
+    "date": "25/04/2025",
+    "applyLink": "https://apply.example.com/electrician2"
+  },
+  {
+    "title": "Labourer",
+    "location": "Visakhapatnam",
+    "salary": "1200 rs",
+    "date": "27/04/2025",
+    "applyLink": "https://apply.example.com/labourer"
+  },
+  {
+    "title": "Office Assistant",
+    "location": "Vadodara",
+    "salary": "1800 rs",
+    "date": "29/04/2025",
+    "applyLink": "https://apply.example.com/office-assistant"
+  },
+  {
+    "title": "Technician",
+    "location": "Ludhiana",
+    "salary": "2300 rs",
+    "date": "01/05/2025",
+    "applyLink": "https://apply.example.com/technician"
+  },
+  {
+    "title": "Nurse",
+    "location": "Coimbatore",
+    "salary": "3000 rs",
+    "date": "03/05/2025",
+    "applyLink": "https://apply.example.com/nurse"
+  },
+  {
+    "title": "Call Center Executive",
+    "location": "Kochi",
+    "salary": "2700 rs",
+    "date": "05/05/2025",
+    "applyLink": "https://apply.example.com/call-center"
+  },
+  {
+    "title": "Retail Sales Executive",
+    "location": "Mysore",
+    "salary": "2100 rs",
+    "date": "07/05/2025",
+    "applyLink": "https://apply.example.com/retail-sales"
+  }
+]
