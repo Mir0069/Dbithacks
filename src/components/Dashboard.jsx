@@ -6,6 +6,7 @@ import { NavLink } from "react-router-dom";
 import { useContext } from "react";
 import { SuccessContext } from "../context/Successcontext";
 import Cookies from "js-cookie"; // You will use js-cookie to access cookies
+import Mapcomp from "./Mapcomp";
 
 const Dashboard = ({User,setUser}) => {
     const [jobs, setJobs] = useState([]);
@@ -192,7 +193,12 @@ const [loading, setLoading] = useState(false);
                         </table>
                     </div>
                 </motion.div>
+                <div className="p-16 rounded-2xl">
+    <Mapcomp className="w-full h-full rounded-3xl" />
+</div>
+
             </div>
+            
         </div>
     );
 };

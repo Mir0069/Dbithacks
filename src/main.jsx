@@ -9,12 +9,13 @@ ReactDOM.createRoot(document.getElementById('root')).render(
   <React.StrictMode>
     <BrowserRouter>
     
-  
+ 
     <SuccessProvider>
             <App />
         </SuccessProvider>
       
-        
+ 
+      
     </BrowserRouter>
   </React.StrictMode>
 );

@@ -11,7 +11,9 @@ import Login from './components/Login';
 import SignUp from './components/SignUp';
 import EmployerDashboard from './components/EmployerDashboard';
 import MyJobs from './components/Myjobs';
-
+import Empl from './components/Empl';
+import Emp from './components/Emp';
+import Ngo from './components/Ngo';
 import { useState,useEffect } from 'react';
 
 function App() {
@@ -41,12 +43,17 @@ function App() {
         <Route path='/signup' element={<SignUp/>}/>
         <Route path="/employerdashboard" element={<EmployerDashboard/>}/>
         <Route path='/myjobs' element={<MyJobs/>}/>
+        <Route path='/emp' element={<Empl/>}/>
+        <Route path='/empl' element={<Emp/>}/>
+        <Route path='/ngo' element={<Ngo/>}/>
+
+
 
         
         <Route path='/login' element={<Login/>}/>
         
       </Routes>
-      
+    
       <footer className="bg-gradient-to-r from-black to-gray-900 text-center py-4">
         <div className="container mx-auto">
           <p className="text-gray-400">Shramik © 2025</p>

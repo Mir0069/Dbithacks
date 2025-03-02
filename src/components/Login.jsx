@@ -1,131 +1,76 @@
 import React, { useState } from 'react';
-import { useNavigate } from 'react-router-dom';
+import { motion } from 'framer-motion';
+import FindJobs from './Findjob';
+import Hiring from './Hiring';
+import Empl from './Empl';
+import Emp from './Emp';
+
+// Check if NGORegistration exists before using it
+// import NGORegistration from './NGORegistration';
 
 const Login = () => {
-  const [phoneNumber, setPhoneNumber] = useState('');
-  const [password, setPassword] = useState('');
-  const [role, setRole] = useState('employee'); // Default role is 'employee'
-  const [loading, setLoading] = useState(false);
-  const [error, setError] = useState('');
-  const [success, setSuccess] = useState('');
-  const navigate = useNavigate();
+  const [currentComponent, setCurrentComponent] = useState(null);
 
-  const handleSubmit = async (e) => {
-    e.preventDefault();
-
-    setLoading(true);
-    setError('');
-    setSuccess('');
-
-    const formData = {
-      phone_number: phoneNumber,
-      password: password,
-    };
-
-    try {
-      const response = await fetch('https://poetic-subtle-amoeba.ngrok-free.app/login/', {
-        method: 'POST',
-        headers: {
-          
-          'Content-Type': 'application/json',
-        },
-        body: JSON.stringify(formData),
-      });
-
-      if (response.ok) {
-        const data = await response.json();
-        console.log(data.access);
-
-        // Save token and (optionally) the user name to localStorage
-        localStorage.setItem('token', data.access);
-        
-
-        setSuccess('Login successful!');
-
-        // After successful login, navigate to the corresponding dashboard based on role
-        if (role === 'employee') {
-          navigate('/dashboard');
-        } else if (role === 'employer') {
-          navigate('/employer-dashboard');
-        } else if (role === 'ngo') {
-          navigate('/ngo-dashboard');
-        }
-      } else {
-        setError('Invalid phone number or password.');
-      }
-    } catch (err) {
-      console.error(err);
-      setError('An error occurred. Please try again later.');
-    } finally {
-      setLoading(false);
+  // Render the selected component
+  const renderComponent = () => {
+    switch (currentComponent) {
+      case 'employee':
+        return <Emp/>;
+      case 'employer':
+        return <Empl />;
+      case 'ngoRegistration':
+        return <div className="text-gray-500">NGO Registration Coming Soon...</div>; 
+      default:
+        return (
+          <motion.div 
+            initial={{ opacity: 0, y: 10 }} 
+            animate={{ opacity: 1, y: 0 }} 
+            transition={{ duration: 0.5 }}
+            className="space-y-4"
+          >
+            {[
+              { label: 'Employee', key: 'employee' },
+              { label: 'Employer', key: 'employer' },
+              { label: 'NGO Registration', key: 'ngoRegistration' },
+            ].map((item, index) => (
+              <motion.button
+                key={item.key}
+                initial={{ scale: 0.9, opacity: 0 }}
+                animate={{ scale: 1, opacity: 1 }}
+                transition={{ duration: 0.3, delay: 0.1 * index }}
+                className="w-full px-5 py-3 bg-blue-500 text-white rounded-lg shadow-md hover:bg-blue-600 transition duration-300"
+                onClick={() => setCurrentComponent(item.key)}
+              >
+                {item.label}
+              </motion.button>
+            ))}
+          </motion.div>
+        );
     }
   };
 
   return (
-    <div className="flex justify-center items-center min-h-screen bg-gray-100">
-      <div className="bg-white p-8 rounded-lg shadow-lg w-96">
-        <h2 className="text-2xl font-semibold mb-6 text-center">Login</h2>
-
-        {error && <div className="text-red-500 text-center mb-4">{error}</div>}
-        {success && <div className="text-green-500 text-center mb-4">{success}</div>}
-
-        <form onSubmit={handleSubmit}>
-          <div className="mb-4">
-            <label htmlFor="phoneNumber" className="block text-sm font-medium text-gray-700">
-              Phone Number
-            </label>
-            <input
-              id="phoneNumber"
-              type="text"
-              value={phoneNumber}
-              onChange={(e) => setPhoneNumber(e.target.value)}
-              required
-              className="mt-2 p-3 w-full border border-gray-300 rounded-lg"
-              placeholder="Enter phone number"
-            />
-          </div>
-
-          <div className="mb-4">
-            <label htmlFor="password" className="block text-sm font-medium text-gray-700">
-              Password
-            </label>
-            <input
-              id="password"
-              type="password"
-              value={password}
-              onChange={(e) => setPassword(e.target.value)}
-              required
-              className="mt-2 p-3 w-full border border-gray-300 rounded-lg"
-              placeholder="Enter password"
-            />
-          </div>
-
-          {/* Dropdown for Role Selection */}
-          <div className="mb-6">
-            <label htmlFor="role" className="block text-sm font-medium text-gray-700">
-              Select Role
-            </label>
-            <select
-              id="role"
-              value={role}
-              onChange={(e) => setRole(e.target.value)}
-              className="mt-2 p-3 w-full border border-gray-300 rounded-lg"
-            >
-              <option value="employee">Employee</option>
-              <option value="employer">Employer</option>
-              <option value="ngo">NGO</option>
-            </select>
-          </div>
-
-          <button
-            type="submit"
-            disabled={loading}
-            className="w-full py-3 bg-blue-500 text-white rounded-lg hover:bg-blue-600 focus:outline-none"
+    <div className="min-h-screen flex items-center justify-center bg-gray-100">
+      <motion.div 
+        initial={{ opacity: 0, scale: 0.9 }} 
+        animate={{ opacity: 1, scale: 1 }} 
+        transition={{ duration: 0.5, ease: "easeOut" }}
+        className="bg-white p-8 rounded-lg shadow-lg w-full max-w-md text-center"
+      >
+        <h1 className="text-3xl font-semibold mb-6 text-gray-700">Sign Up</h1>
+        {renderComponent()}
+        {currentComponent && (
+          <motion.button
+            initial={{ opacity: 0 }}
+            animate={{ opacity: 1 }}
+            transition={{ duration: 0.3, delay: 0.2 }}
+            className="mt-4 px-5 py-2 bg-gray-300 text-gray-700 rounded-lg hover:bg-gray-400 transition"
+            onClick={() => setCurrentComponent(null)}
           >
-            {loading ? 'Loading...' : 'Login'}
-          </button>
-        </form>
-      </div>
+            Back
+          </motion.button>
+        )}
+      </motion.div>
     </div>
   );
 };

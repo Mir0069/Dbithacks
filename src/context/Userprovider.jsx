@@ -1,36 +1,39 @@
 // UserProvider.js
 import React, { createContext, useState, useEffect } from 'react';
+import Cookies from 'js-cookie';
 
+// Create the context
 export const UserContext = createContext();
 
+// Create the provider component
 export const UserProvider = ({ children }) => {
   const [user, setUser] = useState({ token: null, userName: null });
 
-  // On mount, load token (and userName if available) from localStorage
+  // Load any saved user details from cookies on initial render
   useEffect(() => {
-    const token = localStorage.getItem("token");
-    const userName = localStorage.getItem("userName");
-    if (token) {
-      setUser({ token, userName });
+    const savedToken = Cookies.get('token');
+    const savedUserName = Cookies.get('userName');
+    if (savedToken && savedUserName) {
+      setUser({ token: savedToken, userName: savedUserName });
     }
   }, []);
 
-  // Function to update user data and store it in localStorage
-  const setUserData = (token, userName) => {
-    localStorage.setItem("token", token);
-    localStorage.setItem("userName", userName);
+  // Function to update user info and store it in cookies
+  const setUserCookie = (token, userName) => {
+    Cookies.set('token', token, { expires: 7, path: '/' });
+    Cookies.set('userName', userName, { expires: 7, path: '/' });
     setUser({ token, userName });
   };
 
-  // Function to clear user data from localStorage
-  const clearUserData = () => {
-    localStorage.removeItem("token");
-    localStorage.removeItem("userName");
+  // Function to clear user data from cookies
+  const clearUserCookie = () => {
+    Cookies.remove('token');
+    Cookies.remove('userName');
     setUser({ token: null, userName: null });
   };
 
   return (
-    <UserContext.Provider value={{ user, setUserData, clearUserData }}>
+    <UserContext.Provider value={{ user, setUserCookie, clearUserCookie }}>
       {children}
     </UserContext.Provider>
   );
